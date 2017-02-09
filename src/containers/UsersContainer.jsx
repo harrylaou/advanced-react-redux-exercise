@@ -1,62 +1,66 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import * as actions from '../actions'
+import * as userActions from '../actions/users'
+import * as uiActions from '../actions/ui'
+import * as messageActions from '../actions/message'
 import * as api from '../api'
 import Users from '../components/User/Users'
-import { API_SEARCH_USER_BASE_URL } from '../config'
 
 class UsersContainer extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      isFetching: false,
-      users: [],
-      link: {}
-    }
-  }
-
   componentDidMount() {
-    const {
-      query = 'javascript'
-    } = this.props
-
-    this.fetch(`${API_SEARCH_USER_BASE_URL}?q=${query}&sort=sort&order=asc`)
+    this.fetch({ query: 'javascript' })
   }
 
   fetchNextPage = () => {
-    this.fetch(this.state.links.next)
+    this.fetch({ nextUrl: this.props.nextUrl })
   }
 
-  fetch = url => {
-    this.setState({ isFetching: true })
-    api.fetchUsers(url).then( ({ users, link }) => {
-      this.props.receiveUsers(users.items)
+  fetch = params => {
+    this.props.fechingUsers(true)
+    api.fetchUsers(params).then( ({ users, nextUrl }) => {
+      this.props.receiveUsers(users.items, nextUrl)
+      this.props.fechingUsers(false)
+    }).catch(error => {
+      this.props.fechingUsers(false)
     })
+  }
+
+  sendMessageTo = user => {
+    this.props.setMessageTo(user)
+    this.props.setIsSideMenuOpen(true)
   }
 
   render() {
     return <Users
-      fetchUsers={ this.fetchUsers }
-      users={this.props.users}
+      fetchNextPage={ this.fetchNextPage }
+      users={ this.props.users }
+      isFetching={ this.props.isFetching }
+      sendMessageTo={ this.sendMessageTo }
     />
   }
 }
 
 UsersContainer.propTypes = {
   receiveUsers: React.PropTypes.func,
-  users: React.PropTypes.array
-}
-
-UsersContainer.defaultProps = {
-  users: []
+  fechingUsers: React.PropTypes.func,
+  users: React.PropTypes.array,
+  isFetching: React.PropTypes.bool,
+  nextUrl: React.PropTypes.string,
+  setIsSideMenuOpen: React.PropTypes.func,
+  setMessageTo: React.PropTypes.func
 }
 
 const mapStateToProps = state => ({
-  users: state.users.items
+  users: state.users.items,
+  nextUrl: state.users.nextUrl,
+  isFetching: state.users.isFetching
 })
 
 const mapDispatchToProps = ({
-  receiveUsers: actions.receiveUsers
+  receiveUsers: userActions.receiveUsers,
+  fechingUsers: userActions.fechingUsers,
+  setIsSideMenuOpen: uiActions.setIsSideMenuOpen,
+  setMessageTo: messageActions.setMessageTo
 })
 
 export default connect(

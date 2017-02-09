@@ -99,6 +99,7 @@ header .intro-text .name {
   text-transform: uppercase;
   font-weight: 700;
   border: none;
+  z-index: 999;
 }
 .navbar-custom a:focus {
   outline: none;
@@ -251,6 +252,7 @@ footer .footer-below {
   height: 24px;
   width: 24px;
   right: 4px !important;
+  display: none !important;
 }
 
 /* Color/shape of close button cross */
@@ -452,6 +454,13 @@ h3.beer_title {
 .game-actions {
   padding-bottom:50px;
   padding-top:30px;
+}
+
+.close-side-menu {
+    position: absolute;
+    top: 15px;
+    right:15px;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 767px) {

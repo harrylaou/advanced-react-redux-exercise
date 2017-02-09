@@ -1,15 +1,11 @@
 import React from 'react'
+import ChatContainer from '../../containers/ChatContainer'
 
 import SideMenu from './Menus/SideMenu'
 
-const Menu = ({ isOpen, pageWrapId, toggleMenu }) => (
-  <SideMenu
-    isOpen={isOpen}
-    toggleMenu={toggleMenu}
-  >
-    <h3 style={{ paddingTop: '50px' }}>
-      Send a message
-    </h3>
+const Menu = ({ pageWrapId }) => (
+  <SideMenu pageWrapId={pageWrapId} >
+    <ChatContainer />
   </SideMenu>
 )
 

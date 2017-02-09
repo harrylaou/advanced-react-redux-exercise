@@ -4,6 +4,7 @@ import Navbar from './Navigations/Navbar'
 import Menu from './Navigations/Menu'
 
 class Main extends React.Component {
+  /*
   constructor () {
     super()
     this.toggleMenu = this.toggleMenu.bind(this)
@@ -15,15 +16,12 @@ class Main extends React.Component {
   toggleMenu () {
     this.setState({ menu: { open: !this.state.menu.open } })
   }
+  /*/
 
   render () {
     return (
       <div id="page-wrap">
-        <Menu
-          pageWrapId="page-wrap"
-          isOpen={this.state.menu.open}
-          toggleMenu={this.toggleMenu}
-        />
+        <Menu pageWrapId="page-wrap" />
         <Navbar />
         <div className="container" style={{ paddingTop: '100px' }}>
           <UsersContainer />
