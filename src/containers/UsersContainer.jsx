@@ -47,7 +47,7 @@ UsersContainer.propTypes = {
 
 const mapStateToProps = state => ({
   users: state.users.items,
-  nextUrl: state.users.nextUrl,
+  nextUrl: state.users.nextUrl
 })
 
 const mapDispatchToProps = ({
