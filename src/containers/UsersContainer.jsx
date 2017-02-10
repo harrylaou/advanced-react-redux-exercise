@@ -28,6 +28,7 @@ class UsersContainer extends React.Component {
       fetchNextPage={ this.fetchNextPage }
       users={ this.props.users }
       sendMessageTo={ this.sendMessageTo }
+      isFetching={ this.props.isFetching }
     />
   }
 }
@@ -35,6 +36,7 @@ class UsersContainer extends React.Component {
 UsersContainer.propTypes = {
   fetchUsers: React.PropTypes.func,
   users: React.PropTypes.array,
+  isFetching: React.PropTypes.bool,
   nextUrl: React.PropTypes.string,
   setIsSideMenuOpen: React.PropTypes.func,
   setMessageTo: React.PropTypes.func
@@ -43,6 +45,7 @@ UsersContainer.propTypes = {
 const mapStateToProps = state => ({
   users: state.users.items,
   nextUrl: state.users.nextUrl,
+  isFetching: state.users.isFetching
 })
 
 const mapDispatchToProps = ({
