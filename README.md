@@ -24,4 +24,4 @@ You need to have `node`and `npm`installed in your computer.
 
 5. Using thunks, add loading indicators to the fetchUser action creator in /actions/users.js.
 
-6. Using Normalizr and a Redux middleware api, abstract the logic from the action creators in /actions/users.js to the middleware api
+6. Using Normalizr and a Redux middleware api, abstract the logic from the action creators in /actions/users.js to the middleware api. Add selectors for the state.
