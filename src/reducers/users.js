@@ -1,14 +1,12 @@
 import { USERS_RECEIVE, FETCHING_USERS } from '../actions/users'
 
-const users = (state = { items: {}, isFetching: false, nextUrl: null, result: [] }, action) => {
+const users = (state = { items: [], isFetching: false, nextPageUrl: null }, action) => {
   switch (action.type) {
     case USERS_RECEIVE: {
       return {
         ...state,
-        items: { ...state.items, ...action.payload.entities.users },
-        //items: [ ...state.items, ...action.payload.items ],
-        result: [...state.result, ...action.payload.results.users ],
-        nextUrl: action.payload.nextUrl
+        items: [ ...state.items, ...action.payload.items ],
+        nextPageUrl: action.payload.nextPageUrl
       }
     }
     case FETCHING_USERS:

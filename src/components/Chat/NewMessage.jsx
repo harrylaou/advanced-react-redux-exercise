@@ -9,7 +9,7 @@ const NewMessage = ({ user }) => (
           className="form-control"
           style={{ marginTop: '-5px' }}
           rows="5"
-          placeholder="I'm feeling lucky..." />
+          placeholder="Hello!" />
       </div>
       <button className="btn btn-warning btn-block">Send message</button>
   </div>
