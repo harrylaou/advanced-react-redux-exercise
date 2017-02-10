@@ -1,28 +1,28 @@
 import { createStore, applyMiddleware } from 'redux'
 import reducers from '../reducers'
 
-const addLoggerMiddleware = store => {
+const addLoggerMiddleware = (store) => {
   const rawDispatch = store.dispatch
   return (action) => {
-    console.group(action.type);
-    console.log('prev state', store.getState());
-    console.log('action', action);
-    const returnValue = rawDispatch(action);
-    console.log('next state', store.getState());
-    console.groupEnd(action.type);
-    return returnValue;
+    console.group(action.type)
+    console.log('prev state', store.getState())
+    console.log('action', action)
+    const returnValue = rawDispatch(action)
+    console.log('next state', store.getState())
+    console.groupEnd(action.type)
+    return returnValue
   }
 }
 
-const addPromiseSupportToDispatch = (store) => {
-  const rawDispatch = store.dispatch;
+const addPromiseSupportToDispatch = (store)=> {
+  const rawDispatch = store.dispatch
   return (action) => {
     if (typeof action.then === 'function') {
-      return action.then(rawDispatch);
+      return action.then(rawDispatch)
     }
-    return rawDispatch(action);
-  };
-};
+    return rawDispatch(action)
+  }
+}
 
 const configureStore = () => {
   const store = createStore(
@@ -34,5 +34,12 @@ const configureStore = () => {
 
   return store
 }
+
+const wrapDispatchWithMiddlewares = (store, middlewares) =>
+  middlewares.slice().reverse().forEach(middleware => {
+    store.dispatch = middleware(store)(store.dispatch)
+  })
+
+// wrapDispatchWithMiddlewares(store, [addPromiseSupportToDispatch, addLoggerMiddleware])
 
 export default configureStore
