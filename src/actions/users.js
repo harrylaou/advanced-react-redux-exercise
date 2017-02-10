@@ -1,6 +1,5 @@
-//import { CALL_API, getJSON } from 'redux-api-middleware';
-import { CALL_API, Schemas } from '../middleware/api';
 import linkHeader from 'parse-link-header'
+import { CALL_API, Schemas } from '../middleware/api';
 import { API_SEARCH_USER_BASE_URL } from '../config'
 
 export const USERS_REQUEST = 'USERS_REQUEST'
@@ -17,17 +16,6 @@ export const fetchUsers = ({ nextUrl, query }) => {
       types: [
         USERS_REQUEST,
         USERS_RECEIVE,
-        /*
-        {
-          type: USERS_RECEIVE,
-          payload: (action, state, res) => getJSON(res).then(
-            data => ({
-              nextUrl: linkHeader(res.headers.getAll('Link')[0]).next.url,
-              items: data.items
-            })
-          )
-        },
-        */
         USERS_RECEIVE
       ]
     }

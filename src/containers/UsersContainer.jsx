@@ -20,19 +20,6 @@ class UsersContainer extends React.Component {
     this.props.fetchUsers(params)
   }
 
-  /*
-  fetch = params => {
-    this.props.fetchUsers(params)
-    this.props.fechingUsers(true)
-    api.fetchUsers(params).then( ({ users, nextUrl }) => {
-      this.props.receiveUsers(users.items, nextUrl)
-      this.props.fechingUsers(false)
-    }).catch(error => {
-      this.props.fechingUsers(false)
-    })
-  }
-  */
-
   sendMessageTo = user => {
     this.props.setMessageTo(user)
     this.props.setIsSideMenuOpen(true)
@@ -65,8 +52,6 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = ({
-  // receiveUsers: userActions.receiveUsers,
-  // fechingUsers: userActions.fechingUsers,
   fetchUsers: userActions.fetchUsers,
   setIsSideMenuOpen: uiActions.setIsSideMenuOpen,
   setMessageTo: messageActions.setMessageTo
