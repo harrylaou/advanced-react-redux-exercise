@@ -36,7 +36,6 @@ class UsersContainer extends React.Component {
 }
 
 UsersContainer.propTypes = {
-  receiveUsers: React.PropTypes.func,
   fechingUsers: React.PropTypes.func,
   users: React.PropTypes.array,
   isFetching: React.PropTypes.bool,
