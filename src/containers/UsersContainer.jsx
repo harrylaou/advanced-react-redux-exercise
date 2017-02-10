@@ -5,6 +5,7 @@ import * as uiActions from '../actions/ui'
 import * as messageActions from '../actions/message'
 import * as api from '../api'
 import Users from '../components/User/Users'
+import { selectUsers, selectNextPageUrl, selectIsFetchingUsers } from '../selectors/users'
 
 class UsersContainer extends React.Component {
   componentDidMount() {
@@ -16,6 +17,12 @@ class UsersContainer extends React.Component {
   }
 
   fetch = params => {
+    this.props.fetchUsers(params)
+  }
+
+  /*
+  fetch = params => {
+    this.props.fetchUsers(params)
     this.props.fechingUsers(true)
     api.fetchUsers(params).then( ({ users, nextUrl }) => {
       this.props.receiveUsers(users.items, nextUrl)
@@ -24,6 +31,7 @@ class UsersContainer extends React.Component {
       this.props.fechingUsers(false)
     })
   }
+  */
 
   sendMessageTo = user => {
     this.props.setMessageTo(user)
@@ -51,14 +59,15 @@ UsersContainer.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  users: state.users.items,
-  nextUrl: state.users.nextUrl,
-  isFetching: state.users.isFetching
+  users: selectUsers(state),
+  nextUrl: selectNextPageUrl(state),
+  isFetching: selectIsFetchingUsers(state)
 })
 
 const mapDispatchToProps = ({
-  receiveUsers: userActions.receiveUsers,
-  fechingUsers: userActions.fechingUsers,
+  // receiveUsers: userActions.receiveUsers,
+  // fechingUsers: userActions.fechingUsers,
+  fetchUsers: userActions.fetchUsers,
   setIsSideMenuOpen: uiActions.setIsSideMenuOpen,
   setMessageTo: messageActions.setMessageTo
 })
