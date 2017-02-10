@@ -21,17 +21,6 @@ class UsersContainer extends React.Component {
     }).catch(error => {
       console.log('error', error)
     })
-
-    /*
-    //this.props.fechingUsers(true)
-    api.fetchUsers(params).then( ({ users, nextUrl }) => {
-      this.props.receiveUsers(users.items, nextUrl)
-      //this.props.fechingUsers(false)
-    }).catch(error => {
-      console.log('error', error)
-      //this.props.fechingUsers(false)
-    })
-    */
   }
 
   sendMessageTo = user => {
@@ -43,7 +32,6 @@ class UsersContainer extends React.Component {
     return <Users
       fetchNextPage={ this.fetchNextPage }
       users={ this.props.users }
-      isFetching={ this.props.isFetching }
       sendMessageTo={ this.sendMessageTo }
     />
   }
@@ -52,7 +40,6 @@ class UsersContainer extends React.Component {
 UsersContainer.propTypes = {
   receiveUsers: React.PropTypes.func,
   users: React.PropTypes.array,
-  isFetching: React.PropTypes.bool,
   nextUrl: React.PropTypes.string,
   setIsSideMenuOpen: React.PropTypes.func,
   setMessageTo: React.PropTypes.func
@@ -61,7 +48,6 @@ UsersContainer.propTypes = {
 const mapStateToProps = state => ({
   users: state.users.items,
   nextUrl: state.users.nextUrl,
-  isFetching: state.users.isFetching
 })
 
 const mapDispatchToProps = ({
