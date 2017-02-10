@@ -16,7 +16,8 @@ You need to have `node`and `npm`installed in your computer.
 
 1. Create a logger middleware to log in the console every action that is dispatched
 
-2. Using the redux-promise middleware, move all the api calls from the /containers/UsersContainer.jsx to the action creators in /actions/users.js
+
+2. Create a promise middleware to teach the dispatch to understand promises. Then move the api call from the fetch method in the /containers/UsersContainer.jsx to an action creators in /actions/users.js
 
 3. Move all the logic from the fetch(params) method in /containers/UsersContainer.jsx to the action creators in /actions/users.js
 

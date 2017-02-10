@@ -16,13 +16,22 @@ class UsersContainer extends React.Component {
   }
 
   fetch = params => {
-    this.props.fechingUsers(true)
+    api.fetchUsers(params).then( ({ users, nextUrl }) => {
+      this.props.receiveUsers(users, nextUrl)
+    }).catch(error => {
+      console.log('error', error)
+    })
+
+    /*
+    //this.props.fechingUsers(true)
     api.fetchUsers(params).then( ({ users, nextUrl }) => {
       this.props.receiveUsers(users.items, nextUrl)
-      this.props.fechingUsers(false)
+      //this.props.fechingUsers(false)
     }).catch(error => {
-      this.props.fechingUsers(false)
+      console.log('error', error)
+      //this.props.fechingUsers(false)
     })
+    */
   }
 
   sendMessageTo = user => {
@@ -42,7 +51,6 @@ class UsersContainer extends React.Component {
 
 UsersContainer.propTypes = {
   receiveUsers: React.PropTypes.func,
-  fechingUsers: React.PropTypes.func,
   users: React.PropTypes.array,
   isFetching: React.PropTypes.bool,
   nextUrl: React.PropTypes.string,
@@ -58,7 +66,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = ({
   receiveUsers: userActions.receiveUsers,
-  fechingUsers: userActions.fechingUsers,
   setIsSideMenuOpen: uiActions.setIsSideMenuOpen,
   setMessageTo: messageActions.setMessageTo
 })
