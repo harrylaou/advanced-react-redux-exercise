@@ -22,6 +22,6 @@ You need to have `node`and `npm`installed in your computer.
 
 4. Refactor the middleware you've created to use use the logger-middleware and promise-middleware from npm
 
-4. Using thunks, add loading indicators to the fetchUser action creator in /actions/users.js.
+5. Using thunks, add loading indicators to the fetchUser action creator in /actions/users.js.
 
-5. Using Normalizr and a Redux middleware api, abstract the logic from the action creators in /actions/users.js to the middleware api
+6. Using Normalizr and a Redux middleware api, abstract the logic from the action creators in /actions/users.js to the middleware api
