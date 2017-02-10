@@ -20,8 +20,10 @@ You need to have `node`and `npm`installed in your computer.
 
 3. Refactor the middleware so it implements a middleware chain
 
-4. Refactor the middleware you've created to use use the logger-middleware and promise-middleware from npm
+4. Refactor the middleware you've created to use the logger-middleware and promise-middleware from npm
 
 5. Using thunks, add loading indicators to the fetchUser action creator in /actions/users.js.
 
-6. Using Normalizr and a Redux middleware api, abstract the logic from the action creators in /actions/users.js to the middleware api
+6. Abstract the logic from the action creators in /actions/users.js to the redux-api-middleware (https://www.npmjs.com/package/redux-api-middleware). Add selectors for the redux store.
+
+7. Instead of the redux-api-middleware use a custom api middleware. Use Normalizr to normalize the response. Hint, you need to fix just two files: selectors/users.js and actions/users.js
