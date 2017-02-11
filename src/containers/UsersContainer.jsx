@@ -5,7 +5,7 @@ import * as uiActions from '../actions/ui'
 import * as messageActions from '../actions/message'
 import Users from '../components/User/Users'
 
-class UsersContainer extends React.Component {
+export class UsersContainer extends React.Component {
   componentDidMount() {
     this.fetch({ query: 'javascript' })
   }
@@ -42,13 +42,13 @@ UsersContainer.propTypes = {
   setMessageTo: React.PropTypes.func
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   users: state.users.items,
   nextUrl: state.users.nextUrl,
   isFetching: state.users.isFetching
 })
 
-const mapDispatchToProps = ({
+export const mapDispatchToProps = ({
   fetchUsers: userActions.fetchUsers,
   setIsSideMenuOpen: uiActions.setIsSideMenuOpen,
   setMessageTo: messageActions.setMessageTo

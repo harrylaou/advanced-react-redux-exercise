@@ -1,4 +1,5 @@
 import linkHeader from 'parse-link-header'
+import 'whatwg-fetch'
 
 import { API_SEARCH_USER_BASE_URL } from '../config'
 
