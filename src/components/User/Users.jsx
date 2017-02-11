@@ -3,7 +3,7 @@ import React from 'react'
 const Users = ({ users, isFetching, fetchNextPage, sendMessageTo }) => (
   <div style={{ paddingBottom: '40px' }}>
     {users.map( user => (
-      <div className="media" key={user.id}>
+        <div className="media" key={user.id}>
         <div className="media-left">
           <img alt="64x64" src={user.avatar_url} className="media-object" style={{ width: '64px', height: '64px' }} />
         </div>
