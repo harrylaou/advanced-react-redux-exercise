@@ -52,7 +52,7 @@ const mapStateToProps = state => ({
 })
 
 const testPromise = () => (
-  Promise.resolve()
+  Promise.resolve({ type: 'working!'})
 )
 
 const mapDispatchToProps = ({
