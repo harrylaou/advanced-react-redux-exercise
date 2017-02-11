@@ -9,6 +9,7 @@ import Users from '../components/User/Users'
 class UsersContainer extends React.Component {
   componentDidMount() {
     this.fetch({ query: 'javascript' })
+    this.props.testPromise()
   }
 
   fetchNextPage = () => {
@@ -50,10 +51,15 @@ const mapStateToProps = state => ({
   nextUrl: state.users.nextUrl,
 })
 
+const testPromise = () => (
+  Promise.resolve()
+)
+
 const mapDispatchToProps = ({
   receiveUsers: userActions.receiveUsers,
   setIsSideMenuOpen: uiActions.setIsSideMenuOpen,
-  setMessageTo: messageActions.setMessageTo
+  setMessageTo: messageActions.setMessageTo,
+  testPromise
 })
 
 export default connect(
