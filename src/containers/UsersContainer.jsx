@@ -4,6 +4,7 @@ import * as userActions from '../actions/users'
 import * as uiActions from '../actions/ui'
 import * as messageActions from '../actions/message'
 import Users from '../components/User/Users'
+import * as api from '../api'
 
 class UsersContainer extends React.Component {
   componentDidMount() {
@@ -15,7 +16,13 @@ class UsersContainer extends React.Component {
   }
 
   fetch = params => {
-    this.props.fetchUsers(params)
+    this.props.fetchingUsers(true)
+    api.fetchUsers(params).then(({ users, nextUrl }) => {
+      this.props.fetchingUsers(false)
+      this.props.receiveUsers(users, nextUrl)
+    }).catch(() => {
+      this.props.fetchingUsers(false)
+    })
   }
 
   sendMessageTo = user => {
@@ -51,7 +58,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = ({
   fetchUsers: userActions.fetchUsers,
   setIsSideMenuOpen: uiActions.setIsSideMenuOpen,
-  setMessageTo: messageActions.setMessageTo
+  setMessageTo: messageActions.setMessageTo,
+  fetchingUsers: userActions.fetchingUsers,
+  receiveUsers: userActions.receiveUsers
 })
 
 export default connect(

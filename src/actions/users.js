@@ -3,7 +3,7 @@ import * as api from '../api'
 export const RECEIVE_USERS = 'RECEIVE_USERS'
 export const FETCHING_USERS = 'FETCHING_USERS'
 
-const fetchingUsers = isFetching => ({
+export const fetchingUsers = isFetching => ({
   type: FETCHING_USERS,
   isFetching
 })
