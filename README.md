@@ -26,4 +26,4 @@ You need to have `node`and `npm`installed in your computer.
 
 6. Abstract the logic from the action creators in /actions/users.js to the redux-api-middleware (https://www.npmjs.com/package/redux-api-middleware). Add selectors for the redux store.
 
-7. Instead of the redux-api-middleware use a custom api middleware. Use Normalizr to normalize the response. Hint, you need to fix just two files: selectors/users.js and actions/users.js
+7. Instead of the redux-api-middleware use a custom api middleware. Hint, you need to fix just two files: selectors/users.js and actions/users.js
