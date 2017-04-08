@@ -40,6 +40,4 @@ const wrapDispatchWithMiddlewares = (store, middlewares) =>
     store.dispatch = middleware(store)(store.dispatch)
   })
 
-// wrapDispatchWithMiddlewares(store, [addPromiseSupportToDispatch, addLoggerMiddleware])
-
 export default configureStore
