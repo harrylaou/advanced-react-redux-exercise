@@ -16,11 +16,11 @@ You need to have `node`and `npm`installed in your computer.
 
 1. Create a logger middleware to log in the console every action that is dispatched
 
-2. Create a promise middleware to teach store's dispatch how to understand promises. Then move the api call from the fetch method in the /containers/UsersContainer.jsx to a fetchUser action creator in /actions/users.js
+2. Create a promise middleware to teach store's dispatch how to understand promises. Then move the api call the (fetch function) in the /containers/UsersContainer.jsx to a fetchUser action creator in /actions/users.js
 
 3. Refactor the middleware so it implements a middleware chain
 
-4. Refactor the middleware you've created to use the logger-middleware and promise-middleware from npm
+4. Refactor the configureStore.dev.js to use the logger-middleware and promise-middleware from npm instead of the addLoggerMiddleware and addPromiseSupportToDispatch that you've created.
 
 5. Using thunks, add loading indicators to the fetchUser action creator in /actions/users.js.
 
