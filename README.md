@@ -17,14 +17,15 @@ You need to have `node`and `npm`installed in your computer.
 1. Create a logger middleware to log in the console every action that is dispatched
 
 2. Create a promise middleware to teach store's dispatch how to understand promises. 
-2. b. Then move the api call the (fetch function) in the /containers/UsersContainer.jsx to a fetchUser action creator in /actions/users.js
 
-3. Refactor the middleware so it implements a middleware chain
+3. Move the api call the (fetch function) in the /containers/UsersContainer.jsx to a fetchUser action creator in /actions/users.js
 
-4. Refactor the configureStore.dev.js to use the logger-middleware and promise-middleware from npm instead of the addLoggerMiddleware and addPromiseSupportToDispatch that you've created.
+4. Refactor the middleware so it implements a middleware chain
 
-5. Using thunks, add loading indicators to the fetchUser action creator in /actions/users.js.
+5. Refactor the configureStore.dev.js to use the logger-middleware and promise-middleware from npm instead of the addLoggerMiddleware and addPromiseSupportToDispatch that you've created.
 
-6. Abstract the logic from the action creators in /actions/users.js to the redux-api-middleware (https://www.npmjs.com/package/redux-api-middleware). Add selectors for the redux store.
+6. Using thunks, add loading indicators to the fetchUser action creator in /actions/users.js.
 
-7. Instead of the redux-api-middleware use a custom api middleware. Hint, you need to fix just two files: selectors/users.js and actions/users.js
+7. Abstract the logic from the action creators in /actions/users.js to the redux-api-middleware (https://www.npmjs.com/package/redux-api-middleware). Add selectors for the redux store.
+
+8. Instead of the redux-api-middleware use a custom api middleware. Hint, you need to fix just two files: selectors/users.js and actions/users.js
