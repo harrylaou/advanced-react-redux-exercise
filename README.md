@@ -18,7 +18,7 @@ You need to have `node`and `npm`installed in your computer.
 
 2. Create a promise middleware to teach store's dispatch how to understand promises. 
 
-3. Move the api call the (fetch function) in the /containers/UsersContainer.jsx to a fetchUser action creator in /actions/users.js
+3. Move the api call in the fetch method in  /containers/UsersContainer.jsx to a fetchUser action creator in /actions/users.js
 
 4. Refactor the middleware so it implements a middleware chain
 
