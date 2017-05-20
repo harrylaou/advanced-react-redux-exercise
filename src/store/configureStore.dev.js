@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware } from 'redux'
+import {createStore, applyMiddleware} from 'redux'
 import reducers from '../reducers'
 
 const addLoggerMiddleware = store => {
@@ -14,12 +14,25 @@ const addLoggerMiddleware = store => {
   }
 }
 
+const addPromiseMiddleware = store => {
+  const rawDispatch = store.dispatch
+  return (action) => {
+
+    if (typeof action.then === "function") {
+      action.then(data => rawDispatch(data))
+    } else {
+      return rawDispatch(action);
+    }
+
+
+  }
+}
+
 const configureStore = () => {
-  const store = createStore(
-    reducers
-  )
+  const store = createStore(reducers)
 
   store.dispatch = addLoggerMiddleware(store)
+  store.dispatch = addPromiseMiddleware(store)
 
   return store
 }
